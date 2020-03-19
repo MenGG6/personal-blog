@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+    修改评论
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+
+
+{% block content %}
+<div class="container">
+	<div class="row">
+			
+			<div class="col-9">
+				<h2 class="mt-4 mb-4">回复{{ comment.user }}:</h2>
+			</div>
+			
+			<div class="col-12">
+				<h4>{{ comment.body|safe }}</h4>
+			</div>
+			<br>
+			<br>
+			<br>
+			<div>
+			<form action="." method="post">
+			{% csrf_token %}
+			
+			
+			
+					{{ form.media }}
+					{{ form.body }}
+			
+			<!-- 提交按钮 -->
+                <button type="submit" class="btn btn-primary ">发送</button>
+			</form>
+		</div>
+    </div>
+</div>
+   
+{% endblock content %}

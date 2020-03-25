@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'vb&t4a5bsl#ly&*$o@0lqxi00g*(!&&wjd55bg!76)z831@w=-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','.mengg.com']
+ALLOWED_HOSTS = ['*']
 
 AUTHENTICATION_BACKENDS = (
     # Django 后台可独立于 allauth 登录
@@ -156,8 +156,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
-#静态文件收集目录
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# 静态文件收集目录
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 
 #增加SMTP服务器设置
 EMAIL_HOST = 'smtp.qq.com'

@@ -22,17 +22,19 @@
 			<h1 class="mt-4 mb-4">{{ article.topic }}</h1>
 			<div class="alert alert-success">
 				<div>
-					{{ article.total }}阅读——{{ article.comments.count }}评论—— {{ article.created|date:'Y/m/d' }} 发布
-					<a href="{% url 'article:article_edit' article.id %}" >编辑本文</a>·
-					<a href="#" onclick="confirm_safe_delete()">删除本文</a>
-					<form
-					style="display:none;"
-					id="safe_delete"
-					action="{% url 'article:article_safe_delete' article.id %}"
-					method="POST">
-					{% csrf_token %}
+					{{ article.total }}阅读 — {{ comment_count }}评论 — {{ article.created|date:'Y/m/d' }} 发布
+					{% if user.is_superuser %}
+						<a href="{% url 'article:article_edit' article.id %}" >编辑本文</a>·
+						<a href="#" onclick="confirm_safe_delete()">删除本文</a>
+						<form
+						style="display:none;"
+						id="safe_delete"
+						action="{% url 'article:article_safe_delete' article.id %}"
+						method="POST">
+						{% csrf_token %}
                             <button type="submit">发送</button>
-                    </form>
+						</form>
+					{% endif %}	
 				</div>
 			</div>
 			<br>

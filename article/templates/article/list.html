@@ -23,6 +23,7 @@
                 </a>
             </li>
         </ol>
+
     </nav>
 
     <!-- 新增，搜索栏 -->
@@ -114,7 +115,7 @@
 		{% if search %}
 		
 		{% else %}
-			<h4>没有文章，快来<a href="{% url 'article:article_create' %}">写点文章</a>吧~</h4>
+			<h4>博主灵感缺失了，抱歉~~</h4>
 		{% endif %}
     {% endfor %}
 </div>

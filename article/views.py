@@ -72,12 +72,14 @@ def article_context(request, id):
 	article.entry = md.convert(article.entry)
 	article.total += 1
 	article.save(update_fields=['total'])
+	comment_count = comments.count
 	comment_form = CommentForm()
 	context = {
 		'article': article, 
 		'comments': comments, 
 		'comment_form': comment_form, 
 		'toc': md.toc,
+		'comment_count': comment_count,
 		}
 	return render(request, 'article/context.html', context)
 

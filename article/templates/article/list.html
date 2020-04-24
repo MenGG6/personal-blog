@@ -89,7 +89,7 @@
             <!-- 摘要 -->
             <div>
                 <p style="color: gray;">
-                    {{ article.entry|slice:'100' }}...
+                    {{ article.entry|slice:'100' |safe}}...
                 </p>
             </div>
             <!-- 注脚 -->
@@ -100,16 +100,14 @@
                     {{ article.total }} 浏览&nbsp;&nbsp;&nbsp;
                 </span>
                 <span>
-					<i class="fas fa-comments" style="color: yellowgreen;"></i>
-                    {{ article.comments.count }} 评论&nbsp;&nbsp;&nbsp;
-                </span>
+					
                 <span>
 					<i class="fas fa-clock" style="color: pink;"></i>
                     {{ article.created|date:'Y-m-d' }} 创建
                 </span>
             </p>
             <hr>
-        </div>
+		</div>
 
     {% empty %}
 		{% if search %}
@@ -120,7 +118,7 @@
     {% endfor %}
 </div>
 
-	{% if articles %}
+
 
         <!-- 页码导航 -->
         <div class="pagination row ">
@@ -140,10 +138,12 @@
             {% endif %}
 
             <!-- 当前页面 -->
+          
+            
             <span class="current btn btn-danger btn-lg">
                 {{ articles.number }}
             </span>
-
+			
             <!-- 如果不是最末页，则显示下翻按钮 -->
             {% if articles.has_next %}
                 <a href="?page={{ articles.next_page_number }}&order={{order}}&search={{ search }}&column={{ column }}"
@@ -161,7 +161,8 @@
         </span>
     </div>
 </div>
-	{% else %}
-	{% endif %}
+
+	
 </div>
+
 {% endblock content %}

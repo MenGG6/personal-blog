@@ -16,13 +16,14 @@
 
 <!-- 文章详情 -->
 <div class="container">
-	<div class="row">
+	<div class="row">        
         <!-- 标题及作者 -->
 		<div class="col-9">
 			<h1 class="mt-4 mb-4">{{ article.topic }}</h1>
 			<div class="alert alert-success">
 				<div>
 					{{ article.total }}阅读 — {{ comment_count }}评论 — {{ article.created|date:'Y/m/d' }} 发布
+					<a href="#Comment_win" >前往评论</a>
 					{% if user.is_superuser %}
 						<a href="{% url 'article:article_edit' article.id %}" >编辑本文</a>·
 						<a href="#" onclick="confirm_safe_delete()">删除本文</a>
@@ -34,7 +35,8 @@
 						{% csrf_token %}
                             <button type="submit">发送</button>
 						</form>
-					{% endif %}	
+					{% endif %}
+					
 				</div>
 			</div>
 			<br>
@@ -64,7 +66,8 @@
   
     <hr>
      {% if user.is_authenticated %}
-        <div>
+     <!-- 设置前往评论的锚点 -->
+        <div id="Comment_win">
             <form action="{% url 'comment:post_comment' article.id %}" method="POST">
             {% csrf_token %}
                 <!-- 评论区-->
@@ -93,7 +96,7 @@
     <br>
     <h4>共有{{ comments.count }}条评论</h4>
    
-<div class="row">
+<div class="row" >
 		<!-- 遍历树-->
         {% recursetree comments %}
         <!-- 重命名node-->
@@ -102,8 +105,7 @@
                         offset-1 col-11
                         {% else %}
                         col-12
-                        {% endif %}"
-            >
+                        {% endif %}" id="comment_elem_{{ comment.id }}">
                 <hr>
                 <p>
                     <strong style="color: pink">

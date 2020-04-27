@@ -1,5 +1,5 @@
 import markdown
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Article, ArticleColumn
 from comment.models import Comment
@@ -57,7 +57,8 @@ def article_list(request):
 
 
 def article_context(request, id):
-	article = Article.objects.get(id=id)
+	#article = Article.objects.get(id=id)  修改为错误404
+	article = get_object_or_404(Article, id=id)
 	comments = Comment.objects.filter(article=id)
 	md = markdown.Markdown(
 		extensions=[# 包含缩写、表格等扩展功能
@@ -106,14 +107,14 @@ def article_create(request):
 
 @login_required
 def article_delete(request, id):
-    article = Article.objects.get(id=id)
+    article = get_object_or_404(Article, id=id)
     article.delete()
     return redirect('article:article_list')
 
 @login_required
 def article_safe_delete(request, id):
     if request.method == 'POST':
-        article = Article.objects.get(id=id)
+        article = get_object_or_404(Article, id=id)
         if request.user != article.author:
             return HttpResponse("抱歉，你无权修改这篇文章。")
         article.delete()
@@ -123,7 +124,7 @@ def article_safe_delete(request, id):
 
 @login_required
 def article_edit(request, id):
-    article = Article.objects.get(id=id)
+    article = get_object_or_404(Article, id=id)
     if request.method != 'POST':
         form = ArticleForm(instance=article)
         columns = ArticleColumn.objects.all()

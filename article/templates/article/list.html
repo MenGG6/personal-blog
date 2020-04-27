@@ -1,6 +1,6 @@
 <!-- extends表明此页面继承自 base.html 文件 -->
 {% extends "base.html" %}
-
+{% load my_filter %}
 
 <!-- 写入 base.html 中定义的 title -->
 
@@ -54,7 +54,8 @@
 
 
    <!-- 列表循环 -->
-<div class="row mt-2">
+<div class="row ">
+	
     {% for article in articles %}
         <!-- 文章内容 -->
         <div class="col-12">
@@ -97,13 +98,13 @@
                 <!-- 附加信息 -->
                 <span>
 					<i class="fas fa-eye" style="color: lightskyblue;"></i>
-                    {{ article.total }} 浏览&nbsp;&nbsp;&nbsp;
+                    <span style="color: colorful">{{ article.total|trans_watched }} &nbsp;&nbsp;&nbsp;</span>
                 </span>
                 <span>
 					
                 <span>
 					<i class="fas fa-clock" style="color: pink;"></i>
-                    {{ article.created|date:'Y-m-d' }} 创建
+                    {{ article.created|trans_time }} 
                 </span>
             </p>
             <hr>
@@ -117,7 +118,7 @@
 		{% endif %}
     {% endfor %}
 </div>
-
+	
 
 
         <!-- 页码导航 -->

@@ -30,6 +30,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
     path('notice/', include('notice.urls', namespace='notice')),
+    path('liudong/', include('liudong.urls', namespace='liudong')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

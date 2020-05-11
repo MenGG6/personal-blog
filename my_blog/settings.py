@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'vb&t4a5bsl#ly&*$o@0lqxi00g*(!&&wjd55bg!76)z831@w=-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -65,6 +65,8 @@ INSTALLED_APPS = [
     'notifications',
     #通知app
     'notice',
+    #增加刘栋买房app
+    'liudong',
 ]
 # 设置站定
 SITE_ID = 1

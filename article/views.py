@@ -91,7 +91,7 @@ def article_create(request):
         form = ArticleForm()
         columns = ArticleColumn.objects.all()
     else:
-        form = ArticleForm(data=request.POST)
+        form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             new_article = form.save(commit=False)
             new_article.author = User.objects.get(id=request.user.id)

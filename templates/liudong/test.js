@@ -1,61 +1,3 @@
-{% extends "base6.html" %}
-{% load staticfiles %}
-
-{% block title %} 刘栋卖房 {% endblock title %}
-
-{% block content %}
-
-<div class="container">
-   <ul class="lunboimg">
-      <li class="lbimg">
-        <a href="#"><img src="http://www.xueshengmai.com/s-1-2168.html" width="500px" height="300px"></a>
-      </li>
-      <li class="lbimg">
-        <a href="#"><img src="http://www.xueshengmai.com/d/file/20191230/smallbe7111b7d0b0b773fa5206d179bc21e21577696850.jpg" width="500px" height="300px"></a>
-      </li>
-      <li class="lbimg">
-        <a href="#"><img src="http://www.xueshengmai.com/d/file/20191227/small9bb4cedc21c1aaad07e332f8cc62f8ed1577441612.jpg" width="500px" height="300px"></a>
-      </li>
-      <li class="lbimg">
-        <a href="#"><img src="http://www.xueshengmai.com/d/file/20191224/small3545e33181d810de5840898d2cef96091577168190.jpg" width="500px" height="300px"></a>
-      </li>
-    </ul>
-    <ul class="lunbobtn">
-      <li class="lbbtn"></li>
-      <li class="lbbtn"></li>
-      <li class="lbbtn"></li>
-      <li class="lbbtn"></li>
-    </ul>
-    <div class="rlbtn">
-      <div id="rightbtn" class="righttriangle"></div>
-      <div id="leftbtn" class="lefttriangle"></div>
-    </div>
-
- 
- <div class="row">
-        <div class="col-12">
-            <br>
-            <form action="." method="post">
-                {% csrf_token %}
-                <div class="form-group">
-                    <!-- 标签 -->
-                    <label for="name">您的姓名</label>
-                    <!-- 文本框 -->
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <!-- 标签 -->
-                    <label for="phone">您的手机</label>
-                    <!-- 文本框 -->
-                    <input type="text" class="form-control" id="phone" name="phone" required>
-                </div>
-                <!-- 提交按钮 -->
-                <button type="submit" class="btn btn-primary">填好了>></button>
-                </form>
-			</div>
-    </div>
-</div>
-<script>
 window.onload=function(){
     lunBo("lbimg","lbbtn");
 }
@@ -128,7 +70,3 @@ function lunBo(lbimg,lbbtn){
         scollMove=setInterval(autoMove,2000);
     };
 }
-
-</script>
-
-{% endblock content %}

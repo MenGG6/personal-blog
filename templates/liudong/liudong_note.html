@@ -1,39 +1,62 @@
 {% extends "base6.html" %}
 {% load staticfiles %}
 
-{% block title %} 刘栋卖房 {% endblock title %}
+{% block title %} 绿地•临沂城际空间站 {% endblock title %}
 
 {% block content %}
 
 <div class="container">
-   <ul class="lunboimg">
-      <li class="lbimg">
-        <a href="#"><img src="http://www.xueshengmai.com/s-1-2168.html" width="500px" height="300px"></a>
-      </li>
-      <li class="lbimg">
-        <a href="#"><img src="http://www.xueshengmai.com/d/file/20191230/smallbe7111b7d0b0b773fa5206d179bc21e21577696850.jpg" width="500px" height="300px"></a>
-      </li>
-      <li class="lbimg">
-        <a href="#"><img src="http://www.xueshengmai.com/d/file/20191227/small9bb4cedc21c1aaad07e332f8cc62f8ed1577441612.jpg" width="500px" height="300px"></a>
-      </li>
-      <li class="lbimg">
-        <a href="#"><img src="http://www.xueshengmai.com/d/file/20191224/small3545e33181d810de5840898d2cef96091577168190.jpg" width="500px" height="300px"></a>
-      </li>
-    </ul>
-    <ul class="lunbobtn">
-      <li class="lbbtn"></li>
-      <li class="lbbtn"></li>
-      <li class="lbbtn"></li>
-      <li class="lbbtn"></li>
-    </ul>
-    <div class="rlbtn">
-      <div id="rightbtn" class="righttriangle"></div>
-      <div id="leftbtn" class="lefttriangle"></div>
-    </div>
 
+
+<div id="demo" class="carousel slide" data-ride="carousel">
  
- <div class="row">
-        <div class="col-12">
+  <!-- 指示符 -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+    <li data-target="#demo" data-slide-to="3"></li>
+    <li data-target="#demo" data-slide-to="4"></li>
+    <li data-target="#demo" data-slide-to="5"></li>
+  </ul>
+ 
+  <!-- 轮播图片 -->
+  <div class="carousel-inner">
+
+		<div class="carousel-item active">
+			<img src="{{ article_1.avatar.url }}" alt="avatar" style="max-width:100%; border-radius: 20px">-
+		</div>
+		<div class="carousel-item ">
+			<img src="{{ article_2.avatar.url }}" alt="avatar" style="max-width:100%; border-radius: 20px">-
+		</div>
+		<div class="carousel-item ">
+			<img src="{{ article_3.avatar.url }}" alt="avatar" style="max-width:100%; border-radius: 20px">-
+		</div>
+		<div class="carousel-item ">
+			<img src="{{ article_4.avatar.url }}" alt="avatar" style="max-width:100%; border-radius: 20px">-
+		</div>
+		<div class="carousel-item ">
+			<img src="{{ article_5.avatar.url }}" alt="avatar" style="max-width:100%; border-radius: 20px">-
+		</div>
+		<div class="carousel-item ">
+			<img src="{{ article_6.avatar.url }}" alt="avatar" style="max-width:100%; border-radius: 20px">-
+		</div>
+		
+ </div>
+  <!-- 左右切换按钮 -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+ 
+</div>
+
+	<hr style="width: 100%;">
+	<div class="row">
+		<!--sm是等分一行，后面的数字代表列数，最大是12-->
+        <div class="col-sm-6">
             <br>
             <form action="." method="post">
                 {% csrf_token %}
@@ -53,82 +76,13 @@
                 <button type="submit" class="btn btn-primary">填好了>></button>
                 </form>
 			</div>
+		<div class="col-sm-6">
+			<br>
+			
+			<h4>刘冻17686903334（微信同号）<br>微信号：gemian012</h4>
+		</div>
+    
     </div>
 </div>
-<script>
-window.onload=function(){
-    lunBo("lbimg","lbbtn");
-}
-    //轮播图函数
-function lunBo(lbimg,lbbtn){
-    var lbimgs=document.getElementsByClassName(lbimg);
-    var lbbtns=document.getElementsByClassName(lbbtn);
-    //图片及标识键设置函数（轮播到当前页面设置透明度为1，标识按钮设置为红色，其他页面隐藏）
-    function initSet(index){
-        for(var i=0;i<lbimgs.length;i++){
-            lbimgs[i].style.opacity='0';
-            lbbtns[i].style.backgroundColor='gray';
-        }
-        lbimgs[index].style.opacity='1';
-        lbbtns[index].style.backgroundColor='blue';
-    }
-    //第一张图片初始化。（最开始时轮播到第一张图）
-    initSet(0);
-    //自动轮播函数
-    var count=1;    //从第二张图开始轮播
-    function autoMove(){
-        if(count==lbimgs.length){
-            count=0;
-        }
-        initSet(count);
-        count++;
-    }
-    //设置自动轮播时间
-    var scollMove=setInterval(autoMove,2000);
-    //监听按钮控制跳转当前图片函数
-    lbbtns[0].onclick=function(){
-        clearInterval(scollMove);
-        count=0;
-        initSet(count);
-        scollMove=setInterval(autoMove,2000);
-    }
-    lbbtns[1].onclick=function(){
-        clearInterval(scollMove);
-        count=1;
-        initSet(count);
-        scollMove=setInterval(autoMove,2000);
-    }
-    lbbtns[2].onclick=function(){
-        clearInterval(scollMove);
-        count=2;
-        initSet(count);
-        scollMove=setInterval(autoMove,2000);
-    }
-    lbbtns[3].onclick=function(){
-        clearInterval(scollMove);
-        count=3;
-        initSet(count);
-        scollMove=setInterval(autoMove,2000);
-    }
-    //监听左右控件实现前后跳转图片
-    var rightbtn=document.getElementById("rightbtn");
-    var lefttbtn=document.getElementById("leftbtn");
-    rightbtn.onclick=function(){
-        clearInterval(scollMove);
-        autoMove();
-        scollMove=setInterval(autoMove,2000);
-    }
-    leftbtn.onclick=function(){
-        clearInterval(scollMove);
-        if(count==0){
-            count=lbimgs.length;
-        }
-        count--;
-        initSet(count);
-        scollMove=setInterval(autoMove,2000);
-    };
-}
-
-</script>
 
 {% endblock content %}

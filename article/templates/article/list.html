@@ -55,21 +55,25 @@
 
 
 		<!-- 列表循环 -->
-	<div class="row mt-2">
+    <div class="row mt-2">
 	
     {% for article in articles %}
         <!-- 文章内容 -->
-  
+
              <!-- 标题图 -->
+       <div class="col-3">
         {% if article.avatar %}
-            <div class="col-3">
+          
                 <img src="{{ article.avatar.url }}" 
                      alt="avatar" 
-                     style="max-width:100%; border-radius: 20px">
-            </div>
+                     style="border-radius: 20px"
+                     class="img-fluid"
+                     >
+          
         {% endif %}
+        </div>
       
-        <div class="col">
+        <div class="col-9">
             <!-- 栏目 -->
             {% if article.column %}
                 <a href="{% url 'article:article_list' %}?column={{ article.column.id }}">
@@ -91,9 +95,7 @@
             <!-- 标题 -->
             <h4>
                 <b>
-                    <a href="{% url 'article:article_context' article.id %}"
-                       style="color: black;"
-                    >
+                    <a href="{% url 'article:article_context' article.id %}"style="color: black;">
                         {{ article.topic }}
                     </a>
                 </b>
@@ -119,19 +121,14 @@
                 </span>
             </p>
 
-            {% empty %}
-		{% if search %}
-		
-		{% else %}
-			<h4>博主灵感缺失了，抱歉~~</h4>
-		{% endif %}
-     
+      
 
         </div>
-    <hr style="width: 100%;"/>
-    {% endfor %}
+  <br>
+		 <hr style="width: 100%;"/>
+	{% endfor %}
      
-	</div>
+    </div>	
 
 	
 

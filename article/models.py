@@ -29,8 +29,8 @@ class Article(models.Model):
 	updated = models.DateTimeField(auto_now=True)
 	# 存储正整数的字段
 	total = models.PositiveIntegerField(default=0)
-	#增加图片字段
-	avatar = models.ImageField(upload_to='article/%Y-%m-%d', blank=True)
+	#增加图片字段，增加此字段可以为空
+	avatar = models.ImageField(upload_to='article/%Y-%m-%d/', blank=True, null=True)
 	
 	class Meta:
 		# ordering指定模型返回的排列顺序
@@ -55,5 +55,4 @@ class Article(models.Model):
 			new_y = int(new_x * (y / x))
 			resized_image = image.resize((new_x, new_y), Image.ANTIALIAS)
 			resized_image.save(self.avatar.path)
-		
 		return article

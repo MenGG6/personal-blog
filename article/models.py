@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
-from PIL import Image
+
 
 # Create your models here.
 '''
@@ -47,6 +47,7 @@ class Article(models.Model):
 	#保存时处理图片
 	def save(self, *args, **kwargs):
 		article = super(Article, self).save(*args, **kwargs)
+		'''
 		#固定图片缩放大小
 		if self.avatar and not kwargs.get('update_fields'):
 			image = Image.open(self.avatar)
@@ -55,4 +56,5 @@ class Article(models.Model):
 			new_y = int(new_x * (y / x))
 			resized_image = image.resize((new_x, new_y), Image.ANTIALIAS)
 			resized_image.save(self.avatar.path)
+		'''
 		return article

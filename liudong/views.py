@@ -6,6 +6,7 @@ from article.models import Article
 # Create your views here.
 
 def liudong_note(request):
+	'''
 	articles = Article.objects.all()
 	article_arys = []
 	
@@ -17,7 +18,7 @@ def liudong_note(request):
 	article_4 = article_arys[3]
 	article_5 = article_arys[4]
 	article_6 = article_arys[5]
-
+	'''
 	if request.method != 'POST':
 		form = CustomForm()
 	else:
@@ -26,8 +27,11 @@ def liudong_note(request):
 			new_form = form.save()
 			new_form.save()
 			return HttpResponse('保存成功！')
+	'''
 	context = {'form': form, 'article_1': article_1,  
 			'article_2': article_2, 'article_3': article_3, 
 			'article_4': article_4, 
 			'article_5': article_5, 'article_6': article_6}
+			'''
+	context = {'form': form}
 	return render(request, 'liudong/liudong_note.html', context)
